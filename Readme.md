@@ -1,12 +1,18 @@
 ### Installation instruction
+This repository provides a sample Dockerfile for claude and a compose file to create a claude sandbox.
+You can use it within your coding repository.
 
-1. Build the image:
+1. Copy `docker-compose.yml` and `Dockerfile.claude` into the root of your repository
+2. Build the image:
 ```bash
 docker compose build claude-sandbox
 ```
 
-2. Add this function to your `~/.zshrc` (or `~/.bashrc`):
-```bash
+3. Add this function to your `~/.zshrc` (or `~/.bashrc`):
+
+The function checks if the container is already running and attaches to it, or starts a fresh one. Your Claude login is persisted in `~/.claude-docker` so you only need to authenticate once.
+
+```
  claude-sandbox() {
     local CONTAINER="claude-sandbox"
 
@@ -23,12 +29,12 @@ docker compose build claude-sandbox
   }
 ```
 
-3. Reload your shell, f.e.:
+4. Reload your shell, f.e.:
 ```bash
 source ~/.zshrc
 ```
 
-4. Start the container (once, to log in):
+5. Start the container (once, to log in):
 ```bash
 claude-sandbox
 ```
